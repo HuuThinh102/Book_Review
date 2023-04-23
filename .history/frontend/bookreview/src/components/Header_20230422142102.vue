@@ -1,0 +1,90 @@
+<template>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <img src="../assets/img/logo1.png" alt="..." class="logo ml-3">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active"> 
+                    <router-link to="/" class="nav-link">Home<span class="sr-only">(current)</span></router-link>
+                </li>
+
+                <li class="nav-item active">
+                    <router-link to="/auth/login" class="nav-link btn btn-primary text-white" v-if = "this.$route.path != '/auth/login' && !this.checkItem">Đăng nhập</router-link>
+                </li>
+
+                <li class="nav-item active">
+                    <router-link to="/auth/register" class="nav-link btn btn-primary text-white mx-2" v-if = "this.$route.path != '/auth/register' && !this.checkItem">Đăng ký</router-link>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right" v-if="this.checkItem">
+                <li class="nav-item active dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
+                        Nguyễn Văn A
+                    </a>
+
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <router-link to="/" class="dropdown-item text-dark">Thêm đánh giá</router-link>
+                        <router-link v-on:click="logoutUser()" to="/auth/login"  class="dropdown-item text-dark">Đăng xuất</router-link>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</template>
+
+<script>
+Vue.forceUpdate();
+
+export default {
+    computed: {
+        checkItem() {
+            return localStorage.getItem("id") != null;
+        },
+
+        // nameUser() {
+        //     const name = JSON.parse(localStorage.getItem("id"))[0];
+        //     return name || null;
+        // },
+
+        role() {
+            const position = JSON.parse(localStorage.getItem("id"))[1];
+            return position || null;
+        },
+    },
+    methods: {
+
+        logoutUser() {
+            localStorage.clear();
+            // window.location.reload();
+            this.$forceUpdate();
+        }
+
+    },
+}
+</script>
+
+<style scoped>
+.logo {
+    width: 40px;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+i {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    margin: 0 8px 0 0;
+}
+
+.dropdown-menu-writer {
+    float: right;
+}
+</style>

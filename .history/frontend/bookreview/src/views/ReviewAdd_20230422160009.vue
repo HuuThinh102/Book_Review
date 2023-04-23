@@ -1,0 +1,43 @@
+<template>
+    <div class="home-view container-fluid">
+        <h1 class="text-center my-4" id="title">Thêm bài đánh giá</h1>
+        <div class="container">
+            <form class="container">
+                <div class="form-group">
+                    <label for="exampleInputPassword1" class="text-dark">Tên bài đánh giá</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" >
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1" class="text-dark">Tên sách</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" >
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1" class="text-dark">Tên người đánh giá</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" >
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1" class="text-dark">Tên tác giả</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" >
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1" class="text-dark">Nội dung đánh giá</label>
+                    <textarea class="form-control" id="descript" rows="8" v-model="posts.description"></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="pathURL">Chọn hình ảnh</label><br>
+               
+                    <input type="file" name="name-file" id="pathURL">
+                </div>
+                <button type="submit" class="btn btn-primary text-uppercase" @click="getNameFileImg">Thêm sách</button>
+            </form>
+        </div>
+
+    </div>
+</template>
+<script>
+import axios from 'axios'
+export default {
+
+}
+</script>
+<style ></style>
