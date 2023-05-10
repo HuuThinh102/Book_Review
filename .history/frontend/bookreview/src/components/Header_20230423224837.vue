@@ -8,48 +8,44 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+                <li class="nav-item active"> 
                     <router-link to="/" class="nav-link">Home<span class="sr-only">(current)</span></router-link>
                 </li>
 
             </ul>
             <!-- UI reader -->
-            <ul class="nav navbar-nav navbar-right" v-if="this.checkStorageEmpty">
+            <ul class="nav navbar-nav navbar-right">
                 <li class="nav-item active ">
                     <router-link to="/auth/login" class="nav-link btn btn-primary text-white">Đăng nhập</router-link>
                 </li>
 
                 <li class="nav-item active">
-                    <router-link to="/auth/register" class="nav-link btn btn-primary text-white mx-2">Đăng ký</router-link>
+                    <router-link to="/auth/register" class="nav-link btn btn-primary text-white mx-2" >Đăng ký</router-link>
                 </li>
             </ul>
             <!-- UI writer -->
             <ul class="nav navbar-nav navbar-right" v-if="this.checkWriter">
                 <li class="nav-item active dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
                         {{ this.nameUser }}
                     </a>
 
-                    <div class="dropdown-menu dropdown-menu-right">
+                    <div class="dropdown-menu dropdown-menu-right" >
                         <router-link to="/review/add" class="dropdown-item text-dark">Thêm đánh giá</router-link>
-                        <router-link v-on:click="logoutWriter()" to="/" class="dropdown-item text-dark btn btn-link">Đăng
-                            xuất</router-link>
+                        <router-link v-on:click="logoutUser()" to="/auth/login"  class="dropdown-item text-dark btn btn-link">Đăng xuất</router-link>
                     </div>
                 </li>
             </ul>
             <!-- UI admin -->
-            <ul class="nav navbar-nav navbar-right" v-if="this.checkAdmin">
+            <ul class="nav navbar-nav navbar-right"  v-if="this.checkAdmin">
                 <li class="nav-item active dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
                         {{ this.nameUser }}
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-right">
                         <router-link to="/admin/list-reviews" class="dropdown-item text-dark">Quản lý bài viết</router-link>
-                        <router-link v-on:click="logoutAdmin()" to="/" class="dropdown-item text-dark btn btn-link">Đăng
-                            xuất</router-link>
+                        <router-link v-on:click="logoutUser()" to="/auth/login"  class="dropdown-item text-dark btn btn-link">Đăng xuất</router-link>
                     </div>
                 </li>
             </ul>
@@ -61,20 +57,14 @@
 
 export default {
     computed: {
-        checkStorageEmpty() {
-            return localStorage.getItem("id") === null;
+        checkItem() {
+            return JSON.parse(localStorage.getItem("id")) || null;
         },
         checkWriter() {
-            if (!this.checkStorageEmpty) {
-                return JSON.parse(localStorage.getItem("id"))[1] == "writer";
-            }
-            else return null;
+            return JSON.parse(localStorage.getItem("id"))[1] == "writer";
         },
         checkAdmin() {
-            if (!this.checkStorageEmpty) {
-                return JSON.parse(localStorage.getItem("id"))[1] == "admin";
-            }
-            else return null;
+            return JSON.parse(localStorage.getItem("id"))[1] == "admin";
         },
         nameUser() {
             const name = JSON.parse(localStorage.getItem("id"))[0];
@@ -87,18 +77,14 @@ export default {
         },
     },
     methods: {
-        logoutAdmin(res, req, next) {
-            localStorage.clear();
-            this.$router.push('/')
-            if (this.$route.path == '/') {
-                window.location.reload();
-            }
+
+
+        createItem(){
+            
         },
 
-        logoutWriter(res, req, next) {
+        logoutUser() {
             localStorage.clear();
-            this.$router.push('/');
-            window.location.reload();
         }
 
     },
@@ -121,4 +107,5 @@ i {
     height: 1rem;
     margin: 0 8px 0 0;
 }
+
 </style>

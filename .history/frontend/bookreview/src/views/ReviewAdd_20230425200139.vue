@@ -5,7 +5,7 @@
             <form method="POST" @submit.prevent="addNewReview" class="container">
                 <div class="form-group">
                     <label for="name-review" class="text-dark">Tên bài đánh giá</label>
-                    <input type="text" class="form-control" id="name-review" v-model ="posts.nameReview">
+                    <input type="text" class="form-control" id="name-review" v-model ="posts.nameReviews">
                 </div>
                 <div class="form-group">
                     <label for="name-book" class="text-dark">Tên sách</label>
@@ -41,7 +41,7 @@ export default {
     data(){
         return {
             posts:{
-                nameReview: null,
+                nameReviews: null,
                 contentCreator: null,
                 nameBook: null,
                 author: null,

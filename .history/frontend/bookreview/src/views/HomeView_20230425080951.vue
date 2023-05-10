@@ -4,7 +4,7 @@
         <h1 class="text-center my-4" id="title">BOOK IS LIFE</h1>
         <div class="row">
             <div class="col-8">
-                <h2 class="ml-4 id=" id="title">Danh mục bài viết</h2>
+                <h2 class="ml-4">Danh mục bài viết</h2>
                 <template v-for="(review, index) in reviews" :key="index">
 
                     <div class="row border rounded ml-4 my-3" style="width: 50rem;">
@@ -71,7 +71,7 @@ h1 {
 }
 
 #title {
-    color: rgb(28, 51, 201);
+    color: rgb(9, 121, 143);
     font-family: "Playfair Display";
 }
 

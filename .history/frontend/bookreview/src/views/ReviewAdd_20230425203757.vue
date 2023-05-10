@@ -41,7 +41,7 @@ export default {
     data(){
         return {
             posts:{
-                nameReview: null,
+                nameReviews: null,
                 contentCreator: null,
                 nameBook: null,
                 author: null,

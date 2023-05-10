@@ -71,7 +71,7 @@ h1 {
 }
 
 #title {
-    color: rgb(28, 51, 201);
+    color: rgb(9, 121, 143);
     font-family: "Playfair Display";
 }
 
